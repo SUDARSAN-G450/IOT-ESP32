@@ -1,0 +1,55 @@
+#include <LiquidCrystal_I2C.h>
+#include <Wire.h>
+long distance,duration;
+LiquidCrystal_I2C lcd(0x27,16,2);
+int Red=18;
+int Blue=5;
+int Yellow=17;
+void setup() {
+Serial.begin(9600);
+lcd.init();
+lcd.backlight();
+lcd.setCursor(0,0);
+lcd.print("Ultrasonic");
+pinMode(2, OUTPUT);
+pinMode(19, INPUT);
+pinMode(Red,OUTPUT);
+pinMode(Blue, OUTPUT);
+pinMode(Yellow,OUTPUT);
+
+}
+
+void loop() {
+digitalWrite(2, LOW);
+delay(5);
+digitalWrite(2, HIGH);
+delay(5);
+digitalWrite(2, LOW);
+
+duration=pulseIn(19,HIGH);
+distance=duration*0.034/2;
+lcd.setCursor(0,1);
+lcd.print("Distance : ");
+lcd.print(distance);
+lcd.print("Cm");
+delay(1000);
+if (distance<100){
+  digitalWrite(Red, HIGH);
+  digitalWrite(Blue, LOW);
+  digitalWrite(Yellow,LOW);
+  delay(1000);
+}
+else if(distance>=100 && distance<=300){
+    digitalWrite(Red, LOW);
+  digitalWrite(Blue, HIGH);
+  digitalWrite(Yellow,LOW);
+  delay(1000);
+
+}
+else {
+     digitalWrite(Red, LOW);
+  digitalWrite(Blue, LOW);
+  digitalWrite(Yellow,HIGH);
+  delay(1000);
+}
+}
