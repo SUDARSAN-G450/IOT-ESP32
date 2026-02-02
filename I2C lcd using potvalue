@@ -1,0 +1,21 @@
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd (0x27,16,2);
+int potvalue=0;
+
+void setup() {
+
+  lcd.init();//initialize
+  lcd.backlight();
+  lcd.setCursor (0,0);
+  lcd.print ("potentiometer");
+  
+}
+
+void loop() {
+  potvalue = analogRead(34);
+  lcd.setCursor(0,1);
+  lcd.print("value");//string 
+  lcd.print(potvalue);//variable for value 
+
+}
