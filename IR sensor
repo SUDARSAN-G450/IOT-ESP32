@@ -1,0 +1,26 @@
+int IRsensorPin=4;
+int ledpin=18;
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(IRsensorPin, INPUT);
+  pinMode(ledpin, OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+int IRsensorvalue=digitalRead(IRsensorPin);
+if(IRsensorvalue==LOW)
+{
+  digitalWrite(ledpin, HIGH);
+  Serial.println("object detected");
+  delay(1000);
+} 
+ else{
+  digitalWrite(ledpin, LOW);
+  Serial.println("no object detected");
+  delay(1000);
+ }
+   // this speeds up the simulation
+}
