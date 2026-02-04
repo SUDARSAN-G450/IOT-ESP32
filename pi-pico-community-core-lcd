@@ -1,0 +1,12 @@
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(11,10,9,8,7,6);
+void setup(){
+  lcd.begin(16,2);
+  lcd.setCursor(4,0);
+  lcd.print("Daddy is");
+  lcd.setCursor(5,1);
+  lcd.print(">Home<");
+}
+void loop(){
+  delay(1);
+}
