@@ -1,0 +1,28 @@
+#define R 1
+#define Y 5
+#define G 9
+void setup()
+{
+  pinMode(R, OUTPUT);
+  pinMode(Y, OUTPUT);
+  pinMode(G, OUTPUT);
+
+}
+void loop()
+{
+  digitalWrite(G, HIGH);
+  delay(3000);
+  digitalWrite(G, LOW);
+  digitalWrite(Y, HIGH);
+  delay(500);
+
+  digitalWrite(Y, LOW);
+  digitalWrite(R, HIGH);
+  delay(2000);
+
+  digitalWrite(Y, HIGH);
+  delay(500);
+  digitalWrite(Y, LOW);
+  digitalWrite(R, LOW);
+
+}
